@@ -1,0 +1,35 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: encontrame_rebuild_development
+  username: <%= ENV['DBUSER'] %>
+  password: <%= ENV['DBPASSWORD'] %>
+  host: <%= ENV['DBHOST'] %>
+  port: 5432
+  #schema_search_path: myapp,sharedapp,public
+  #min_messages: notice
+
+test:
+  <<: *default
+  database: encontrame_rebuild_test
+  username: <%= ENV['DBUSER'] %>
+  password: <%= ENV['DBPASSWORD'] %>
+  host: <%= ENV['DBHOST'] %>
+  port: 5432
+
+#   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
+#
+# You can use this database configuration with:
+#
+#   production:
+#     url: <%= ENV['DATABASE_URL'] %>
+#
+production:
+  <<: *default
+  database: encontrame_rebuild_production
+  username: encontrame_rebuild
+  password: <%= ENV['ENCONTRAME_REBUILD_DATABASE_PASSWORD'] %>

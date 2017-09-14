@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Publications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Person name</th>
+      <th>Photo uid</th>
+      <th>Photo name</th>
+      <th>Date of disappearance</th>
+      <th>Age</th>
+      <th>Approximate age</th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>Structure</th>
+      <th>Nickname</th>
+      <th>Clothing</th>
+      <th>Contact email</th>
+      <th>Contact phone</th>
+      <th>Sex</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @publications.each do |publication| %>
+      <tr>
+        <td><%= publication.title %></td>
+        <td><%= publication.person_name %></td>
+        <td><%= publication.photo_uid %></td>
+        <td><%= publication.photo_name %></td>
+        <td><%= publication.date_of_disappearance %></td>
+        <td><%= publication.age %></td>
+        <td><%= publication.approximate_age %></td>
+        <td><%= publication.height %></td>
+        <td><%= publication.weight %></td>
+        <td><%= publication.structure %></td>
+        <td><%= publication.nickname %></td>
+        <td><%= publication.clothing %></td>
+        <td><%= publication.contact_email %></td>
+        <td><%= publication.contact_phone %></td>
+        <td><%= publication.sex %></td>
+        <td><%= link_to 'Show', publication %></td>
+        <td><%= link_to 'Edit', edit_publication_path(publication) %></td>
+        <td><%= link_to 'Destroy', publication, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Publication', new_publication_path %>

@@ -1,0 +1,92 @@
+<%= form_with(model: publication, local: true) do |form| %>
+  <% if publication.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(publication.errors.count, "error") %> prohibited this publication from being saved:</h2>
+
+      <ul>
+      <% publication.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :publication_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :person_name %>
+    <%= form.text_field :person_name, id: :publication_person_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo_uid %>
+    <%= form.text_field :photo_uid, id: :publication_photo_uid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo_name %>
+    <%= form.text_field :photo_name, id: :publication_photo_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_of_disappearance %>
+    <%= form.text_field :date_of_disappearance, id: :publication_date_of_disappearance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.text_field :age, id: :publication_age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :approximate_age %>
+    <%= form.text_field :approximate_age, id: :publication_approximate_age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :height %>
+    <%= form.text_field :height, id: :publication_height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight, id: :publication_weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :structure %>
+    <%= form.text_field :structure, id: :publication_structure %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nickname %>
+    <%= form.text_field :nickname, id: :publication_nickname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :clothing %>
+    <%= form.text_field :clothing, id: :publication_clothing %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_email %>
+    <%= form.text_field :contact_email, id: :publication_contact_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_phone %>
+    <%= form.text_field :contact_phone, id: :publication_contact_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sex %>
+    <%= form.text_field :sex, id: :publication_sex %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
