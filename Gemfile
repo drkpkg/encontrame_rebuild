@@ -15,15 +15,13 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'dotenv-rails'
-# gem 'redis', '~> 3.0'
-# gem 'bcrypt', '~> 3.1.7'
-# gem 'capistrano-rails', group: :development
 gem 'jquery-rails'
 gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 gem 'dragonfly', '~> 1.1.3'
 gem 'devise'
 gem 'cities'
 gem 'json'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
