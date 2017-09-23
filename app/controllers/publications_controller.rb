@@ -4,7 +4,7 @@ class PublicationsController < ApplicationController
   # GET /publications
   # GET /publications.json
   def index
-    @publications = Publication.all
+    @publications = Publication.where(user_id: current_user.id)
   end
 
   # GET /publications/1
@@ -25,6 +25,8 @@ class PublicationsController < ApplicationController
   # POST /publications.json
   def create
     @publication = Publication.new(publication_params)
+    @publication.title = 'DESAPARECIDO'
+    @publication.user_id = current_user.id
 
     respond_to do |format|
       if @publication.save
@@ -69,6 +71,20 @@ class PublicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def publication_params
-      params.require(:publication).permit(:title, :person_name, :photo_uid, :photo_name, :date_of_disappearance, :age, :approximate_age, :height, :weight, :structure, :nickname, :clothing, :contact_email, :contact_phone, :sex)
+      params.require(:publication).permit(
+        :title, 
+        :person_name, 
+        :photo, 
+        :date_of_disappearance, 
+        :age, 
+        :approximate_age, 
+        :height, 
+        :weight, 
+        :structure, 
+        :nickname, 
+        :clothing, 
+        :contact_email, 
+        :contact_phone, 
+        :sex)
     end
 end

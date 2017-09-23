@@ -1,5 +1,7 @@
 {
   "name": "encontrame_rebuild",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "semantic-ui-calendar": "0.0.8"
+  }
 }

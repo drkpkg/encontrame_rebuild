@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery.turbolinks
 //= require jquery3
 //= require jquery_ujs
 //= require semantic-ui
@@ -24,4 +25,9 @@ $(function() {
                 .closest('.message')
                 .transition('fade');
         });
+    $('.ui.dropdown')
+        .dropdown();
+    $('.special.cards .image').dimmer({
+        on: 'hover'
+    });
 });

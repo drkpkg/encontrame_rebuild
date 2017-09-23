@@ -11,13 +11,7 @@
 </p>
 
 <p>
-  <strong>Photo uid:</strong>
-  <%= @publication.photo_uid %>
-</p>
-
-<p>
-  <strong>Photo name:</strong>
-  <%= @publication.photo_name %>
+  <%= image_tag @publication.photo.thumb('300x300#').url if @publication.photo_stored?%>
 </p>
 
 <p>

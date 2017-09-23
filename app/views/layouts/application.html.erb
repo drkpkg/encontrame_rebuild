@@ -3,12 +3,37 @@
   <head>
     <title>EncontrameRebuild</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device.width, initial-scale=1.0">
   </head>
 
   <body>
+      <div class="ui attached stackable menu">
+        <div class="ui container">
+          <%= link_to root_url, class:'item' do %>
+            <i class="home icon"></i> Dashboard
+          <% end %>
+          <%= link_to publications_url, class:'item' do %>
+            <i class="newspaper icon"></i> Mis publicaciones
+          <% end %>
+
+          <div class="right item">
+            <div class="ui simple dropdown item">
+                <%= current_user.email %>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <a class="item"><i class="edit icon"></i> Edit Profile</a>
+                  <a class="item"><i class="globe icon"></i> Elegir idioma</a>
+                  <a class="item"><i class="settings icon"></i> Configurar cuenta</a>
+                  <%= link_to destroy_user_session_url, method: :delete, class:'item' do %>
+                    <i class="sign out icon"></i> Cerrar sesión
+                  <% end %>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
     <%= yield %>
   </body>
 </html>
