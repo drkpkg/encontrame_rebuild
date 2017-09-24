@@ -1,73 +1,79 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @publication.title %>
-</p>
+<div class="ui segment">
+  <p>
+    <%= image_tag @publication.photo.thumb('300x300#').url if @publication.photo_stored?%>
+  </p>
+</div>
 
-<p>
-  <strong>Person name:</strong>
-  <%= @publication.person_name %>
-</p>
-
-<p>
-  <%= image_tag @publication.photo.thumb('300x300#').url if @publication.photo_stored?%>
-</p>
-
-<p>
-  <strong>Date of disappearance:</strong>
-  <%= @publication.date_of_disappearance %>
-</p>
-
-<p>
-  <strong>Age:</strong>
-  <%= @publication.age %>
-</p>
-
-<p>
-  <strong>Approximate age:</strong>
-  <%= @publication.approximate_age %>
-</p>
-
-<p>
-  <strong>Height:</strong>
-  <%= @publication.height %>
-</p>
-
-<p>
-  <strong>Weight:</strong>
-  <%= @publication.weight %>
-</p>
-
-<p>
-  <strong>Structure:</strong>
-  <%= @publication.structure %>
-</p>
-
-<p>
-  <strong>Nickname:</strong>
-  <%= @publication.nickname %>
-</p>
-
-<p>
-  <strong>Clothing:</strong>
-  <%= @publication.clothing %>
-</p>
-
-<p>
-  <strong>Contact email:</strong>
-  <%= @publication.contact_email %>
-</p>
-
-<p>
-  <strong>Contact phone:</strong>
-  <%= @publication.contact_phone %>
-</p>
-
-<p>
-  <strong>Sex:</strong>
-  <%= @publication.sex %>
-</p>
+<div class="ui segment">
+  <p>
+    <strong>Title:</strong>
+    <%= @publication.title %>
+  </p>
+  
+  <p>
+    <strong>Person name:</strong>
+    <%= @publication.person_name %>
+  </p>
+  
+  
+  <p>
+    <strong>Date of disappearance:</strong>
+    <%= @publication.date_of_disappearance %>
+  </p>
+  
+  <p>
+    <strong>Age:</strong>
+    <%= @publication.age %>
+  </p>
+  
+  <p>
+    <strong>Approximate age:</strong>
+    <%= @publication.approximate_age %>
+  </p>
+  
+  <p>
+    <strong>Height:</strong>
+    <%= @publication.height %>
+  </p>
+  
+  <p>
+    <strong>Weight:</strong>
+    <%= @publication.weight %>
+  </p>
+  
+  <p>
+    <strong>Structure:</strong>
+    <%= @publication.structure %>
+  </p>
+  
+  <p>
+    <strong>Nickname:</strong>
+    <%= @publication.nickname %>
+  </p>
+  
+  <p>
+    <strong>Clothing:</strong>
+    <%= @publication.clothing %>
+  </p>
+  
+  <p>
+    <strong>Contact email:</strong>
+    <%= @publication.contact_email %>
+  </p>
+  
+  <p>
+    <strong>Contact phone:</strong>
+    <%= @publication.contact_phone %>
+  </p>
+  
+  <p>
+    <strong>Sex:</strong>
+    <%= @publication.sex %>
+  </p>
+</div>
+<%= render  "comment/new" %>
 
 <%= link_to 'Edit', edit_publication_path(@publication) %> |
 <%= link_to 'Back', publications_path %>

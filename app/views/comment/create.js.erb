@@ -1,0 +1,5 @@
+<% if @is_saved %>
+    alert('Guardado!');
+<% else %>
+    alert("<%= @comment.errors.full_messages %>");
+<% end %>

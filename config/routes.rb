@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   
   root 'dashboard#index'
 
-  resources :publications
+  resources :publications do
+    get 'comment/new'
+    post 'comment/create'
+    put 'comment/edit'
+    delete 'comment/delete'  
+  end
   
 end

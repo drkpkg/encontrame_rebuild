@@ -1,0 +1,5 @@
+<%= form_for(:comment , remote: true, url: publication_comment_create_url(@publication.id)) do |f| %>
+    <%= f.label :context %>
+    <%= f.text_area :context %>
+    <%= f.submit %>
+<% end %>
