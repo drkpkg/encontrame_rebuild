@@ -4,7 +4,7 @@ class PublicationsController < ApplicationController
   # GET /publications
   # GET /publications.json
   def index
-    @publications = Publication.where(user_id: current_user.id)
+    @publications = Publication.where(user_id: current_user.id).page params[:page]
   end
 
   # GET /publications/1

@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     get 'comment/new'
     post 'comment/create'
     put 'comment/edit'
-    delete 'comment/delete'  
+    delete 'comment/delete'
   end
   
+  scope :ab do
+    
+  end
+
 end

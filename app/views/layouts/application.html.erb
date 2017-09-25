@@ -11,15 +11,18 @@
   <body>
       <div class="ui attached stackable menu">
         <div class="ui container">
-          <%= link_to root_url, class:'item' do %>
-            <i class="home icon"></i> Dashboard
-          <% end %>
-          <%= link_to publications_url, class:'item' do %>
-            <i class="newspaper icon"></i> Mis publicaciones
+          <% if !current_user.nil? %>
+            <%= link_to root_url, class:'item' do %>
+              <i class="home icon"></i> Dashboard
+            <% end %>
+            <%= link_to publications_url, class:'item' do %>
+              <i class="newspaper icon"></i> Mis publicaciones
+            <% end %>
           <% end %>
 
           <div class="right item">
             <div class="ui simple dropdown item">
+              <% if !current_user.nil? %>
                 <%= current_user.email %>
                 <i class="dropdown icon"></i>
                 <div class="menu">
@@ -30,6 +33,7 @@
                     <i class="sign out icon"></i> Cerrar sesión
                   <% end %>
                 </div>
+              <% end %>
               </div>
           </div>
         </div>

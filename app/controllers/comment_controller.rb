@@ -3,14 +3,11 @@ class CommentController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(context: params[:comment][:context])
-    @comment.publication_id = params[:comment][:publication_id]
-    @comment.user_id = current_user.id
-    if @comment.save
-       @is_saved = true
-    else
-      @is_saved = false
-    end
+    @publication = Publication.where(publication_id: params[:comment][:publication_id]).first
+    @publication.build_comment(
+      comment: params[:comment][:context],
+      publication_id: params[:comment][:publication_id],
+      user_id: current_user.id)
   end
 
   def edit
