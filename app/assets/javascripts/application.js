@@ -12,19 +12,19 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require jquery.turbolinks
 //= require jquery3
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require semantic-ui
 //= require_tree .
 
-$(function() {
+$(document).on('turbolinks:load', function(){
     $('.message .close')
-        .on('click', function() {
-            $(this)
-                .closest('.message')
-                .transition('fade');
-        });
+    .on('click', function() {
+        $(this)
+            .closest('.message')
+            .transition('fade');
+    });
     $('.ui.dropdown')
         .dropdown();
     $('.special.cards .image').dimmer({
