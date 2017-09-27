@@ -22,6 +22,7 @@ gem 'dragonfly', '~> 1.1.3'
 gem 'devise'
 gem 'cities'
 gem 'json'
+gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'kaminari'
 

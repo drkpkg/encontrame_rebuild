@@ -263,6 +263,7 @@ DEPENDENCIES
   json
   kaminari
   listen (>= 3.0.5, < 3.2)
+  omniauth
   omniauth-facebook
   pg (~> 0.18)
   puma (~> 3.7)
