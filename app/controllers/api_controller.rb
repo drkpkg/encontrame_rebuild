@@ -1,20 +1,22 @@
 class ApiController < ApplicationController
-  skip_before_action :verify_authenticity_token  
-  
+  skip_before_action :verify_authenticity_token
+  before_action :verify_app_tocken
+
   respond_to :json
   
   def user_login
-    render json: {response: "Hola #{params[:nombre]}"}
+    
+    render json: {response: "Hola #{params[:nombre]}"}, status: :ok
   end
 
   def user_create
     user = User.new
 
     if params[:type]=='facebook'
-      user.email = auth.info.email
+      user.email = params[:email]
       user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name 
-      user.photo = auth.info.image
+      user.name = params[:name]
+      user.photo = params[:image]
     else
       #Normal User
       user.email = params[:email]
