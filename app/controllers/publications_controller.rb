@@ -1,6 +1,7 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :verify_authenticity_token  
+  
   # GET /publications
   # GET /publications.json
   def index

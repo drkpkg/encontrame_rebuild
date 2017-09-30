@@ -1,22 +1,32 @@
-class Api::ApiController < Api::BaseController
-  include Devise::Controllers::InternalHelpers
-    
+class ApiController < ApplicationController
+  skip_before_action :verify_authenticity_token  
+  
   respond_to :json
   
   def user_login
-    build_resource
-    resource = User.find_for_database_authentication(:login=>params[:user_login][:login])
-    return invalid_login_attempt unless resource
-
-    if resource.valid_password?(params[:user_login][:password])
-      sign_in("user", resource)
-      render :json=> {:success=>true, :auth_token=>resource.authentication_token, :login=>resource.login, :email=>resource.email}
-      return
-    end
-    invalid_login_attempt
+    render json: {response: "Hola #{params[:nombre]}"}
   end
 
   def user_create
+    user = User.new
+
+    if params[:type]=='facebook'
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name 
+      user.photo = auth.info.image
+    else
+      #Normal User
+      user.email = params[:email]
+      user.password = params[:password]
+    end
+
+    if user.save
+      response = {status: :ok, message: 'Created!'}
+    else
+      response = {status: :bad_request, message: 'BOOM'}
+    end
+    #@user = User.new(params[:email], params[:password])
   end
 
   def publication_all

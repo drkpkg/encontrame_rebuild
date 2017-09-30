@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Publications</h1>
+<div class="ui special cards">
+    <% @publications.each do |publication| %>
+    <div class="card">
+      <div class="blurring dimmable image">
+        <div class="ui dimmer">
+          <div class="content">
+            <div class="center">
+              <div class="ui inverted button">
+                  <%= link_to 'Ver más', publication %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= image_tag publication.photo.thumb('300x300#').url if publication.photo_stored? %>
+      </div>
+      <div class="content">
+        <a class="header">
+          <%= "#{publication.person_name}, #{publication.age}" %>
+        </a>
+        <div class="meta">
+          <span class="date">
+            <%= publication.date_of_disappearance %>
+          </span>
+        </div>
+      </div>
+      <div class="extra content">
+        <a>
+          <%= publication.sex%>
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>
+
