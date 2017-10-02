@@ -78,7 +78,9 @@ class ApiController < ApplicationController
   end
 
   def verify_app_token
-    render json: {message: 'Forbidden'}, status: :unauthorized if !params:[:app_token]
+    if params[:token]
+       render json: {message: 'Forbidden'}, status: :unauthorized
+    end
   end
 
   private

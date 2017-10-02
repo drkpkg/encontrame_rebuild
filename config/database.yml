@@ -31,5 +31,5 @@ test:
 production:
   <<: *default
   database: encontrame_rebuild_production
-  username: encontrame_rebuild
-  password: <%= ENV['ENCONTRAME_REBUILD_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: postgres
