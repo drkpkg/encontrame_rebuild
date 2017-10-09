@@ -1,79 +1,67 @@
 <p id="notice"><%= notice %></p>
 
-<div class="ui segment">
-  <p>
-    <%= image_tag @publication.photo.thumb('300x300#').url if @publication.photo_stored?%>
-  </p>
-</div>
-
-<div class="ui segment">
-  <p>
-    <strong>Title:</strong>
-    <%= @publication.title %>
-  </p>
-  
-  <p>
-    <strong>Person name:</strong>
-    <%= @publication.person_name %>
-  </p>
-  
-  
-  <p>
-    <strong>Date of disappearance:</strong>
-    <%= @publication.date_of_disappearance %>
-  </p>
-  
-  <p>
-    <strong>Age:</strong>
-    <%= @publication.age %>
-  </p>
-  
-  <p>
-    <strong>Approximate age:</strong>
-    <%= @publication.approximate_age %>
-  </p>
-  
-  <p>
-    <strong>Height:</strong>
-    <%= @publication.height %>
-  </p>
-  
-  <p>
-    <strong>Weight:</strong>
-    <%= @publication.weight %>
-  </p>
-  
-  <p>
-    <strong>Structure:</strong>
-    <%= @publication.structure %>
-  </p>
-  
-  <p>
-    <strong>Nickname:</strong>
-    <%= @publication.nickname %>
-  </p>
-  
-  <p>
-    <strong>Clothing:</strong>
-    <%= @publication.clothing %>
-  </p>
-  
-  <p>
-    <strong>Contact email:</strong>
-    <%= @publication.contact_email %>
-  </p>
-  
-  <p>
-    <strong>Contact phone:</strong>
-    <%= @publication.contact_phone %>
-  </p>
-  
-  <p>
-    <strong>Sex:</strong>
-    <%= @publication.sex %>
-  </p>
-</div>
-<%= render  "comment/new" %>
-
 <%= link_to 'Edit', edit_publication_path(@publication) %> |
 <%= link_to 'Back', publications_path %>
+
+<div class="ui items">
+    <div class="item">
+      <div class="ui medium image">
+          <%= image_tag "default.png", size:"300x300" if !@publication.photo_stored?%>
+          <%= image_tag @publication.photo.thumb('300x300#').url if @publication.photo_stored?%>
+      </div>
+      <div class="middle aligned content">
+        <div class="header">
+            <%= @publication.title %>
+        </div>
+        <div class="description">
+          <p>
+              <%= @publication.person_name %> (<%= @publication.nickname %>) - <%= @publication.sex_humanize %>
+          </p>
+          <p>
+            <% if !@publication.approximate_age %>
+              <%= @publication.age %> años de edad
+            <% else %>
+              <%= @publication.age %> años de edad aproximadamente
+            <% end %>
+          </p>
+          <p>(Desaparecido el <%= @publication.date_of_disappearance %>)</p>
+          <p>Peso: <%= @publication.height %> Kg</p>
+          <p>Altura: <%= @publication.weight %></p>
+          <p>Contextura: <%= @publication.structure %></p>
+          <p>Datos de vestimenta: <%= @publication.clothing %></p>
+          <p>
+            <div class="ui accordion">
+              <div class="title">
+                <i class="dropdown icon"></i>
+                Información de contacto
+              </div>
+              <div class="content">
+                <p>
+                  Correo electrónico: <%= @publication.contact_email %>
+                </p>  
+                <p>
+                  Teléfono: <%= @publication.contact_phone %>
+                </p>
+            </div>
+          </p>
+        </div>
+        <div class="extra">
+          <div class="ui buttons">
+            <div class="ui right floated button">
+              Denunciar publicacion    
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="ui accordion">
+  <div class="title">
+    <i class="plus icon"></i>
+    Agregar comentario
+  </div>
+  <div class="content">
+    <%= render  "comment/new" %>
+  </div>
+</div>

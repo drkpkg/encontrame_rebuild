@@ -30,4 +30,6 @@ $(document).on('turbolinks:load', function(){
     $('.special.cards .image').dimmer({
         on: 'hover'
     });
+    $('.ui.accordion')
+        .accordion();
 });
