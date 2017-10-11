@@ -3,7 +3,7 @@ class ApiController < ApplicationController
   before_action :verify_app_token
 
   respond_to :json
-  
+
   def user_login
     user = User.find(id: params[:id])
     #if params[:type] != 'fb'
@@ -36,17 +36,47 @@ class ApiController < ApplicationController
   end
 
   def publication_all
-    publications = Publication.all
+    publications = Array.new
+    
+    Publication.all.each do |publication|
+      publications.push(
+        {
+          'id': publication.id,
+          'name': publication.person_name,
+          'title': publication.title,
+          'photo': "#{request.base_url}#{publication.photo.url}",
+          'date': publication.date_of_disappearance,
+          'age': publication.age,
+          'sex': publication.sex_humanize,
+          'structure': publication.structure,
+          'clothing': publication.clothing,
+          'email': publication.contact_email,
+          'phone': publication.contact_phone
+        } 
+      )
+    end
     render json: {data: publications}, status: :ok
   end
 
   def publication_info
-    publication = Publication.find(id: params[:id])
-    render json: {data: publication}, status: :ok
+    publication = Publication.find(params[:publication_id])
+    render json: {
+      'id': publication.id,
+      'name': publication.person_name,
+      'title': publication.title,
+      'photo': "#{request.base_url}#{publication.photo.url}",
+      'date': publication.date_of_disappearance,
+      'age': publication.age,
+      'sex': publication.sex_humanize,
+      'structure': publication.structure,
+      'clothing': publication.clothing,
+      'email': publication.contact_email,
+      'phone': publication.contact_phone}, 
+      status: :ok
   end
 
   def publication_modify
-    publication = Publication.find(id: params[:id])
+    publication = Publication.find(params[:publication_id])
     if publication.update(publication_params)
       status = :ok
     else
@@ -65,7 +95,7 @@ class ApiController < ApplicationController
   end
 
   def publication_delete
-    publication = Publication.find(id: params[:id])
+    publication = Publication.find(params[:publication_id])
     publication.delete
     render json: {data: :ok}, status: :ok
   end
