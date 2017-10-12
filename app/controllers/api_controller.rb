@@ -5,12 +5,28 @@ class ApiController < ApplicationController
   respond_to :json
 
   def user_login
-    user = User.find(id: params[:id])
-    #if params[:type] != 'fb'
-    #  user.
-    #end
+    user = User.find_by_email(params[:email])
+    response = {}
+    #Type NORMAL or FB
+    if !user.nil?
+      if params[:type] == 'NORMAL'
+        if user.valid_password? params[:password]
+          response = {
+            email: user.email,
+            photo: "#{request.base_url}#{user.photo.url}"
+          }
+          status = 200
+        else
+          status = 400
+        end
+      else
+        status = 200
+      end
+    else
+      status = 400
+    end
 
-    render json: {response: :ok}, status: :ok
+    render json: {response: response}, status: status
   end
 
   def user_create
