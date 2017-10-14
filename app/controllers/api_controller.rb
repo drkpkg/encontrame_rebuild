@@ -6,7 +6,7 @@ class ApiController < ApplicationController
 
   def user_login
     user = User.find_by_email(params[:email])
-    response = {}
+    response = {message: "El usuario o contraseña es inválido"}
     #Type NORMAL or FB
     if !user.nil?
       if params[:type] == 'NORMAL'
@@ -15,18 +15,11 @@ class ApiController < ApplicationController
             email: user.email,
             photo: "#{request.base_url}#{user.photo.url}"
           }
-          status = 200
-        else
-          status = 400
         end
-      else
-        status = 200
       end
-    else
-      status = 400
     end
-
-    render json: {response: response}, status: status
+ 
+    render json: {response: response}, status: :ok
   end
 
   def user_create
