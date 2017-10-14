@@ -87,9 +87,9 @@ class ApiController < ApplicationController
   def publication_modify
     publication = Publication.find(params[:publication_id])
     if publication.update(publication_params)
-      status = :ok
+      status = 200
     else
-      status = :not_modified
+      status = 301
     end
     render json: {data: publication}, status: status
   end
@@ -97,16 +97,19 @@ class ApiController < ApplicationController
   def publication_create
     publication = Publication.new(publication_params)
     if publication.save
-      render json: {data: :ok}, status: :ok  
+      render json: {data: {message: 'Se guardo la publicacion'}}, status: :ok
     else
-      render json: {data: :bad_request}, status: :bad_request
+      render json: {data: {message: 'No se puede guardar la publicacion'}}, status: :bad_request
     end
   end
 
   def publication_delete
     publication = Publication.find(params[:publication_id])
-    publication.delete
-    render json: {data: :ok}, status: :ok
+    if publication.delete
+      render json: {data: 200}, status: :ok
+    else
+      render json: {data: 400}, status: :bad_request
+    end
   end
 
   protected
