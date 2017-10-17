@@ -46,14 +46,25 @@ class ApiController < ApplicationController
 
   def publication_all
     publications = Array.new
+    filter = Hash.new
+    filter[:id] = (params[:from]..params[:to]) if params[:from] and params[:to]
+    filter[:user_id] = params[:user_id] if params[:user_id]
     
-    Publication.all.each do |publication|
+    publications_obj = Publication.where(filter)
+    publications_obj.each do |publication|
+      
+      if publication.photo_stored? 
+        photo_url = "#{request.base_url}#{publication.photo.url}" 
+      else
+        photo_url = "#{request.base_url}/assets/default.png"
+      end
+
       publications.push(
         {
           'id': publication.id,
           'name': publication.person_name,
           'title': publication.title,
-          'photo': "#{request.base_url}#{publication.photo.url}",
+          'photo': photo_url,
           'date': publication.date_of_disappearance,
           'age': publication.age,
           'sex': publication.sex_humanize,
@@ -69,11 +80,16 @@ class ApiController < ApplicationController
 
   def publication_info
     publication = Publication.find(params[:publication_id])
+    if publication.photo_stored? 
+      photo_url = "#{request.base_url}#{publication.photo.url}" 
+    else 
+      photo_url = "#{asset_url 'default.png'}"
+    end
     render json: {
       'id': publication.id,
       'name': publication.person_name,
       'title': publication.title,
-      'photo': "#{request.base_url}#{publication.photo.url}",
+      'photo': photo_url,
       'date': publication.date_of_disappearance,
       'age': publication.age,
       'sex': publication.sex_humanize,

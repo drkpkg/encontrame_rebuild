@@ -15,6 +15,7 @@
           </div>
         </div>
         <%= image_tag publication.photo.thumb('300x300#').url if publication.photo_stored? %>
+        <%= image_tag 'default.png', size:'300x300' if !publication.photo_stored? %>
       </div>
       <div class="content">
         <a class="header">
@@ -28,7 +29,7 @@
       </div>
       <div class="extra content">
         <a>
-          <%= publication.sex%>
+          <%= publication.sex_humanize%>
         </a>
       </div>
     </div>

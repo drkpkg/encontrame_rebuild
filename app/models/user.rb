@@ -2,9 +2,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   dragonfly_accessor :photo do
-    default  Rails.root.join('public', 'images', 'default.png') 
+    Rails.root.join('public', 'images', 'default.png') 
   end
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
@@ -24,5 +24,9 @@ class User < ApplicationRecord
       user.name = auth.info.name   # assuming the user model has a name
       user.photo = auth.info.image # assuming the user model has an image
     end
+  end
+  
+  def set_default_image
+    self.photo =  ActionDispatch::Http::UploadedFile.new(:tempfile => File.new(File.open(Rails.root.join('public', 'images', 'default.png'))))
   end
 end

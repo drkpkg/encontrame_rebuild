@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def index
-    @publications = Publication.all
+    @publications = Publication.order(:person_name).page params[:page]
   end
 end
