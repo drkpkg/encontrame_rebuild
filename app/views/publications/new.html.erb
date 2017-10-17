@@ -1,5 +1,13 @@
-<h1>New Publication</h1>
+<h1>Registro de persona</h1>
+
+<%= link_to publications_path, class:"ui blue icon button" do %>
+    <i class="reply icon"></i>
+<% end %>
+<br/>
+<%= link_to root_path, class:"ui green icon button" do %>
+    <i class="home icon"></i>
+<% end %>
 
 <%= render 'form', publication: @publication %>
 
-<%= link_to 'Back', publications_path %>
+

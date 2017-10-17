@@ -6,7 +6,7 @@ class Publication < ApplicationRecord
     validates_presence_of :person_name
     has_many :comments
 
-    validates_presence_of :person_name, :age, :height, :weight, :date_of_disappearance
+    validates_presence_of :person_name, :age, :height, :weight, :date_of_disappearance, :contact_phone, :contact_email
     
     def sex_humanize
         return "Hombre" if self.sex.eql? 'male'

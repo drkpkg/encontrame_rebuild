@@ -18,13 +18,13 @@
 //= require semantic-ui
 //= require_tree .
 
-$(document).on('turbolinks:load', function(){
+$(document).on('turbolinks:load', function() {
     $('.message .close')
-    .on('click', function() {
-        $(this)
-            .closest('.message')
-            .transition('fade');
-    });
+        .on('click', function() {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
     $('.ui.dropdown')
         .dropdown();
     $('.special.cards .image').dimmer({
@@ -33,3 +33,15 @@ $(document).on('turbolinks:load', function(){
     $('.ui.accordion')
         .accordion();
 });
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('.imgview').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}

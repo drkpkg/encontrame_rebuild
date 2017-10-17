@@ -12,79 +12,97 @@
       </div>
     <% end %>
 
-    <div class="field">
-      <%= form.label :person_name %>
-      <%= form.text_field :person_name, id: :publication_person_name %>
-    </div>
-
     <div class="ui three column grid">
       <div class="column">
         <div class="field">
-          <%= form.label :age %>
+          <%= image_tag 'default', size:"180x180", class:"imgview" %>
+          <%= form.label 'Fotografía', class:'ui small button', for:'publication_photo' %>
+          <%= form.file_field :photo, id: :publication_photo, hidden:true, onchange: "readURL(this)" %>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <%= form.label :person_name, "Nombre completo" %>
+          <%= form.text_field :person_name, id: :publication_person_name %>
+        </div>  
+      </div>
+      <div class="column">
+        <div class="field">
+          <%= form.label :nickname, "Apodo" %>
+          <%= form.text_field :nickname, id: :publication_nickname %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="ui three column grid">
+      <div class="column">
+        <div class="field">
+          <%= form.label :age, "Edad" %>
           <%= form.text_field :age, id: :publication_age %>
           <div class="ui checkbox">
-            <%= form.check_box :approximate_age, id: :publication_approximate_age %>
-            <%= form.label :approximate_age %>
+            <%= form.check_box :approximate_age, id: :publication_approximate_age  %>
+            <%= form.label :approximate_age, "Edad aproximada" %>
           </div>
         </div>
       </div>
       <div class="column">
         <div class="field">
-          <%= form.label :height %>
+          <%= form.label :height, "Altura (cm)" %>
           <%= form.text_field :height, id: :publication_height %>
         </div>
       </div>
       <div class="column">
         <div class="field">
-        <%= form.label :weight %>
+        <%= form.label :weight, "Peso (kg)" %>
         <%= form.text_field :weight, id: :publication_weight %>
       </div>
       </div>
       <div class="column"></div>
     </div>
 
-    <div class="field">
-      <%= form.label 'Fotografía', class:'ui button', for:'publication_photo' %>
-      <%= form.file_field :photo, id: :publication_photo, hidden:true %>
+    <div class="ui three column grid">
+      <div class="column">
+        <div class="field">
+          <%= form.label :sex, "Sexo" %>
+          <%= form.select(:sex, ['male','female'],{include_blank: "Sexo"},{id: :publication_sex, class:'ui dropdown'}) %>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <%= form.label :structure, "Contextura" %>
+          <%= form.select(:structure, ['Delgado','Normal','Obeso'],{include_blank: "Contextura"},{id: :publication_structure, class:'ui dropdown'})%>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <%= form.label :date_of_disappearance, "Fecha de desaparicion" %>
+          <%= form.date_field :date_of_disappearance, id: :publication_date_of_disappearance %>
+        </div>
+      </div>
     </div>
 
     <div class="field">
-      <%= form.label :date_of_disappearance %>
-      <%= form.date_field :date_of_disappearance, id: :publication_date_of_disappearance %>
+      <%= form.label :clothing, "Rasgos y ropa" %>
+      <%= form.text_area :clothing, id: :publication_clothing %>
     </div>
 
-    <div class="field">
-      <%= form.label :structure %>
-      <%= form.select(:structure, ['Delgado','Normal','Obeso'],{include_blank: "Contextura"},{id: :publication_structure, class:'ui dropdown'})%>
+    <div class="ui segment two column grid">
+      <div class="column">
+        <div class="field">
+          <%= form.label :contact_email, "Email de contacto" %>
+          <%= form.text_field :contact_email, id: :publication_contact_email %>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <%= form.label :contact_phone, "Numero de contacto" %>
+          <%= form.text_field :contact_phone, id: :publication_contact_phone %>
+        </div>
+      </div>
     </div>
 
-    <div class="field">
-      <%= form.label :nickname %>
-      <%= form.text_field :nickname, id: :publication_nickname %>
-    </div>
-
-    <div class="field">
-      <%= form.label :clothing %>
-      <%= form.text_field :clothing, id: :publication_clothing %>
-    </div>
-
-    <div class="field">
-      <%= form.label :contact_email %>
-      <%= form.text_field :contact_email, id: :publication_contact_email %>
-    </div>
-
-    <div class="field">
-      <%= form.label :contact_phone %>
-      <%= form.text_field :contact_phone, id: :publication_contact_phone %>
-    </div>
-
-    <div class="field">
-      <%= form.label :sex %>
-      <%= form.select(:sex, ['male','female'],{include_blank: "Sexo"},{id: :publication_sex, class:'ui dropdown'}) %>
-    </div>
-
-    <div class="actions">
-      <%= form.submit %>
+    <div class="ui buttons">
+      <%= form.submit "Registrar persona", class:"ui green button" %>
     </div>
   <% end %>
 

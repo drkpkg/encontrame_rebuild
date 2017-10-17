@@ -5,6 +5,23 @@ GIT
     semantic-ui-sass (2.2.12.0)
       sass (>= 3.2)
 
+GIT
+  remote: https://github.com/kaminari/kaminari
+  revision: 23e4737720675c83e0c06dc269824cd972058419
+  specs:
+    kaminari (1.1.0)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.1.0)
+      kaminari-activerecord (= 1.1.0)
+      kaminari-core (= 1.1.0)
+    kaminari-actionview (1.1.0)
+      actionview
+      kaminari-core (= 1.1.0)
+    kaminari-activerecord (1.1.0)
+      activerecord
+      kaminari-core (= 1.1.0)
+    kaminari-core (1.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -126,18 +143,6 @@ GEM
       turbolinks
     json (2.1.0)
     jwt (1.5.6)
-    kaminari (1.0.1)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.0.1)
-      kaminari-activerecord (= 1.0.1)
-      kaminari-core (= 1.0.1)
-    kaminari-actionview (1.0.1)
-      actionview
-      kaminari-core (= 1.0.1)
-    kaminari-activerecord (1.0.1)
-      activerecord
-      kaminari-core (= 1.0.1)
-    kaminari-core (1.0.1)
     libv8 (3.16.14.19)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -293,7 +298,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   json
-  kaminari
+  kaminari!
   listen (>= 3.0.5, < 3.2)
   omniauth
   omniauth-facebook

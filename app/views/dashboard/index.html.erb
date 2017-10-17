@@ -1,6 +1,14 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="ui info message">
+    <i class="close icon"></i>  
+    <div class="content">
+      <div class="header">Info</div>
+      <p><%= notice %></p>
+    </div>
+  </div>
+<% end %>
 
-<h1>Publications</h1>
+<h1>Personas</h1>
 <div class="ui special cards">
     <% @publications.each do |publication| %>
     <div class="card">
@@ -35,4 +43,5 @@
     </div>
   <% end %>
 </div>
+<br/>  
 <%= paginate @publications %>

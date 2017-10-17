@@ -1,6 +1,21 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="ui info message">
+    <i class="close icon"></i>  
+    <div class="content">
+      <div class="header">Info</div>
+      <p><%= notice %></p>
+    </div>
+  </div>
+<% end %>
 
-<h1>Publications</h1>
+<h1>Personas</h1>
+<%= link_to new_publication_path, class:"ui blue icon button" do %>
+    <i class="plus icon"></i>
+<% end %>
+<br/>
+<%= link_to root_path, class:"ui green icon button" do %>
+    <i class="home icon"></i>
+<% end %>
 <div class="ui special cards">
     <% @publications.each do |publication| %>
     <div class="card">
@@ -35,5 +50,7 @@
     </div>
   <% end %>
 </div>
+<br/>  
 <%= paginate @publications %>
-<%= link_to 'New Publication', new_publication_path %>
+
+

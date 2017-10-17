@@ -11,9 +11,14 @@ class ApiController < ApplicationController
     if !user.nil?
       if params[:type] == 'NORMAL'
         if user.valid_password? params[:password]
+          if user.photo_stored? 
+            photo_url = "#{request.base_url}#{user.photo.url}" 
+          else
+            photo_url = "#{request.base_url}/assets/default.png"
+          end
           response = {
             email: user.email,
-            photo: "#{request.base_url}#{user.photo.url}"
+            photo: photo_url
           }
         end
       end

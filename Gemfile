@@ -24,7 +24,7 @@ gem 'cities'
 gem 'json'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'kaminari'
+gem 'kaminari', :git => 'https://github.com/kaminari/kaminari'
 gem 'rack-cors', :require => 'rack/cors'
 
 group :development, :test do
